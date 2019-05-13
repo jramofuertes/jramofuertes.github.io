@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>cv_jesus</title>
+  </head>
+  <body>
+    <p><b>NOMBRE:</b></p>
+    <p>Jesús Ramo Fuertes</p>
+    <p><b><br>
+      </b></p>
+    <p><b>DIRECCIÓN:</b></p>
+    <p>C/Tirso de Molina, 15 3ºB</p>
+    <p><b><br>
+      </b></p>
+    <p><b>FORMACIÓN:</b></p>
+    <p>Grado en Geografía y Ordenación del Territorio</p>
+    <p>Máster en TIG: Sistemas de información geográfica y Teledetección</p>
+    <p><b><br>
+      </b></p>
+    <p><b>IDIOMAS:</b></p>
+    <p>Español</p>
+    <p>Inglés</p>
+  </body>
+</html>
