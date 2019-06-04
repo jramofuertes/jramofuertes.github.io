@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 900px;
+            height: 579px; <!-- tamaño del visor -->
+        }
+        </style>
+        <title>JESUS RAMO- Visor con QGIS</title>
+    </head>
+    <body>
+        <h1>Cartografía de la susceptibilidad de aludes en el Barranco de Trigoniero (Bielsa)</h1>
+        <h4> Más información: <a href="url">https://zaguan.unizar.es/record/75139/files/TAZ-TFG-2018-2037.pdf</a></h4> <!-- texto e incorporacion de un link, en las lineas 56, 149, 182, 236 se ha editado el modo de representación de los mensajes informativos -->
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Susceptibilidad_1.js"></script>
+        <script src="data/RedFluvial_2.js"></script>
+        <script src="data/Curvasdenivel_3.js"></script>
+        <script src="data/Ibones_4.js"></script>
+        <script src="data/readeestudio_5.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[42.67851262815147,0.19676384404853747],[42.72346466903218,0.28316730388650035]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var img_Iluminacin_0 = 'data/Iluminacin_0.png';
+        var img_bounds_Iluminacin_0 = [[42.65835486258542,0.14134782181581393],[42.75847995245518,0.48667375250305966]];
+        var layer_Iluminacin_0 = new L.imageOverlay(img_Iluminacin_0, img_bounds_Iluminacin_0);
+        bounds_group.addLayer(layer_Iluminacin_0);
+        map.addLayer(layer_Iluminacin_0);
+        function pop_Susceptibilidad_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">valor de susceptibildiad</th>\
+                        <td>' + (feature.properties['gridcode'] !== null ? Autolinker.link(String(feature.properties['gridcode'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Susceptibilidad_1_0(feature) {
+            if (feature.properties['gridcode'] >= 0.000000 && feature.properties['gridcode'] <= 0.000000 ) {
+                return {
+                pane: 'pane_Susceptibilidad_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+            }
+            }
+            if (feature.properties['gridcode'] >= 0.000000 && feature.properties['gridcode'] <= 7500.000000 ) {
+                return {
+                pane: 'pane_Susceptibilidad_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,204,138,1.0)',
+            }
+            }
+            if (feature.properties['gridcode'] >= 7500.000000 && feature.properties['gridcode'] <= 15000.000000 ) {
+                return {
+                pane: 'pane_Susceptibilidad_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,141,89,1.0)',
+            }
+            }
+            if (feature.properties['gridcode'] >= 15000.000000 && feature.properties['gridcode'] <= 20000.000000 ) {
+                return {
+                pane: 'pane_Susceptibilidad_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,74,51,1.0)',
+            }
+            }
+            if (feature.properties['gridcode'] >= 20000.000000 && feature.properties['gridcode'] <= 30000.000000 ) {
+                return {
+                pane: 'pane_Susceptibilidad_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(179,0,0,1.0)',
+            }
+            }
+        }
+        map.createPane('pane_Susceptibilidad_1');
+        map.getPane('pane_Susceptibilidad_1').style.zIndex = 401;
+        map.getPane('pane_Susceptibilidad_1').style['mix-blend-mode'] = 'multiply';
+        var layer_Susceptibilidad_1 = new L.geoJson(json_Susceptibilidad_1, {
+            attribution: '',
+            pane: 'pane_Susceptibilidad_1',
+            onEachFeature: pop_Susceptibilidad_1,
+            style: style_Susceptibilidad_1_0,
+        });
+        bounds_group.addLayer(layer_Susceptibilidad_1);
+        map.addLayer(layer_Susceptibilidad_1);
+        function pop_RedFluvial_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Barranco</th>\
+                        <td>' + (feature.properties['ETIQUETA'] !== null ? Autolinker.link(String(feature.properties['ETIQUETA'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_RedFluvial_2_0() {
+            return {
+                pane: 'pane_RedFluvial_2',
+                opacity: 1,
+                color: 'rgba(31,120,180,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_RedFluvial_2');
+        map.getPane('pane_RedFluvial_2').style.zIndex = 402;
+        map.getPane('pane_RedFluvial_2').style['mix-blend-mode'] = 'normal';
+        var layer_RedFluvial_2 = new L.geoJson(json_RedFluvial_2, {
+            attribution: '',
+            pane: 'pane_RedFluvial_2',
+            onEachFeature: pop_RedFluvial_2,
+            style: style_RedFluvial_2_0,
+        });
+        bounds_group.addLayer(layer_RedFluvial_2);
+        map.addLayer(layer_RedFluvial_2);
+        function pop_Curvasdenivel_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Cota(m)</th>\
+                        <td>' + (feature.properties['COTA_0201'] !== null ? Autolinker.link(String(feature.properties['COTA_0201'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+        function style_Curvasdenivel_3_0(feature) {
+            var context = {
+                feature: feature,
+                variables: {}
+            };
+            // Start of if blocks and style check logic
+            if (Curvasdenivel_3rule0_eval_expression(context)) {
+                  return {
+                pane: 'pane_Curvasdenivel_3',
+                opacity: 1,
+                color: 'rgba(145,82,45,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            };
+                }
+                else if (Curvasdenivel_3rule1_eval_expression(context)) {
+                  return {
+                pane: 'pane_Curvasdenivel_3',
+                opacity: 1,
+                color: 'rgba(149,117,69,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            };
+                }
+            else {
+                return {fill: false, stroke: false};
+            }
+        }
+        map.createPane('pane_Curvasdenivel_3');
+        map.getPane('pane_Curvasdenivel_3').style.zIndex = 403;
+        map.getPane('pane_Curvasdenivel_3').style['mix-blend-mode'] = 'normal';
+        var layer_Curvasdenivel_3 = new L.geoJson(json_Curvasdenivel_3, {
+            attribution: '',
+            pane: 'pane_Curvasdenivel_3',
+            onEachFeature: pop_Curvasdenivel_3,
+            style: style_Curvasdenivel_3_0,
+        });
+        bounds_group.addLayer(layer_Curvasdenivel_3);
+        map.addLayer(layer_Curvasdenivel_3);
+        function pop_Ibones_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Ibon</th>\
+                        <td>' + (feature.properties['ETIQUETA'] !== null ? Autolinker.link(String(feature.properties['ETIQUETA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Ibones_4_0() {
+            return {
+                pane: 'pane_Ibones_4',
+                opacity: 1,
+                color: 'rgba(31,120,180,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+            }
+        }
+        function style_Ibones_4_1() {
+            return {
+                pane: 'pane_Ibones_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,206,227,1.0)',
+            }
+        }
+        map.createPane('pane_Ibones_4');
+        map.getPane('pane_Ibones_4').style.zIndex = 404;
+        map.getPane('pane_Ibones_4').style['mix-blend-mode'] = 'normal';
+        var layer_Ibones_4 = new L.geoJson.multiStyle(json_Ibones_4, {
+            attribution: '',
+            pane: 'pane_Ibones_4',
+            onEachFeature: pop_Ibones_4,
+            styles: [style_Ibones_4_0,style_Ibones_4_1,]
+        });
+        bounds_group.addLayer(layer_Ibones_4);
+        map.addLayer(layer_Ibones_4);
+        function pop_readeestudio_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FID_Catchm'] !== null ? Autolinker.link(String(feature.properties['FID_Catchm'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? Autolinker.link(String(feature.properties['Shape_Leng'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? Autolinker.link(String(feature.properties['Shape_Area'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['HydroID'] !== null ? Autolinker.link(String(feature.properties['HydroID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GridID'] !== null ? Autolinker.link(String(feature.properties['GridID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NextDownID'] !== null ? Autolinker.link(String(feature.properties['NextDownID'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_readeestudio_5_0() {
+            return {
+                pane: 'pane_readeestudio_5',
+                opacity: 1,
+                color: 'rgba(86,86,86,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_readeestudio_5');
+        map.getPane('pane_readeestudio_5').style.zIndex = 405;
+        map.getPane('pane_readeestudio_5').style['mix-blend-mode'] = 'normal';
+        var layer_readeestudio_5 = new L.geoJson(json_readeestudio_5, {
+            attribution: '',
+            pane: 'pane_readeestudio_5',
+            onEachFeature: pop_readeestudio_5,
+            style: style_readeestudio_5_0,
+        });
+        bounds_group.addLayer(layer_readeestudio_5);
+        map.addLayer(layer_readeestudio_5);
+        var baseMaps = {};
+        // controlador de capas, se ha reordenado la información y se ha quitado otra
+        L.control.layers(baseMaps,{'<img src="legend/Ibones_4.png" /> Ibones': layer_Ibones_4, '<img src="legend/RedFluvial_2.png" /> Red Fluvial': layer_RedFluvial_2, 'Curvas de nivel<br /><table><tr><td style="text-align: center;</td><td></td></tr><tr><td style="text-align: center;</td><td></td></tr></table>': layer_Curvasdenivel_3, 'Susceptibilidad<br /><table><tr><td style="text-align: center;"><img src="legend/Susceptibilidad_1_Baja1.png" /></td><td>Baja</td></tr><tr><td style="text-align: center;"><img src="legend/Susceptibilidad_1_Media2.png" /></td><td>Media</td></tr><tr><td style="text-align: center;"><img src="legend/Susceptibilidad_1_Alta3.png" /></td><td>Alta</td></tr><tr><td style="text-align: center;"><img src="legend/Susceptibilidad_1_MuyAlta4.png" /></td><td>Muy Alta</td></tr></table>': layer_Susceptibilidad_1,"Iluminación": layer_Iluminacin_0,}).addTo(map);
+        setBounds();
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        </script>
+    </body>
+</html>
