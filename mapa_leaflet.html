@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JESUS RAMO- Mapa con laeflet</title>
+<title>JESUS RAMO- Mapa con laeflet</title>  <!-- título en la barra superior de la página -->
 <meta charset="utf-8" /> </head>
 
 <!-- enlace a código CSS de Leaflet en la cabecera -->
@@ -10,7 +10,7 @@
 <script src="./leaflet.js"></script>
 
 <body>
-<h1>Mapa de prueba</h1>
+<h1>Mapa de prueba</h1>  <!-- título del mapa -->
 
 <!-- bloque dónde aparecerá el mapa -->
 <div id="bloque_mapa" style="width: 600px; height: 400px;"></div>
@@ -31,20 +31,20 @@
     }).addTo(mi_mapa);
 
     var marker = L.marker([40, -8]  // marcador en esas coordenadas
-   ).addTo(mi_mapa);               // se añade al mapa
+   ).addTo(mi_mapa);                // se añade al mapa
 
     // añadimos círculo
     var circle = L.circle(      // variable círculo en esas coordenadas
      [41, -1], {               // coordenadas del centro
      color: 'red',             // estilo color
-     fillColor: '#f03',        //        color de relleno
-     fillOpacity: 0.5,         //        opacidad del relleno
-     radius: 300000            //        radio: 300Km
+     fillColor: '#f03',        // color de relleno
+     fillOpacity: 0.5,         // opacidad del relleno
+     radius: 300000            // radio: 300Km
      }).addTo(mi_mapa);        // se añade al mapa
 
     // añadimos polígono
     var polygon = L.polygon([   // variable polígono
-      [35, -5],               // coordenadas de los vértices
+      [35, -5],                 // coordenadas de los vértices
       [46, -3],
       [40, 6],
       [40,-1]
@@ -87,7 +87,7 @@
     var overlayMaps = {              // apartado de capas
         "NASAGIBS Viirs Earth At Night 2012": NASAGIBS_ViirsEarthAtNight2012       // elemento a incluir y descripción
         };
-    var capas = L.control.layers(   // variable con control de capas
+    var capas = L.control.layers(     // variable con control de capas
         baseMaps,                     // añadiendo capas base
         overlayMaps,                  // añadiendo capas
         {collapsed:true});            // control NO desplegado
@@ -100,13 +100,13 @@
 
 
 // añadir capa GeoJSON
-    var capa = L.geoJSON( // crear objeto provincias como capa geojson
-        aragon, {             // código a cargar: `provincias`
+    var capa = L.geoJSON(          // crear objeto provincias como capa geojson
+        aragon, {                  // código a cargar: `provincias`
         color: 'red',             // estilo color
-        fillColor: 'blue',        //        color de relleno
-        fillOpacity: 0.2,         //        opacidad de relleno
+        fillColor: 'blue',        // color de relleno
+        fillOpacity: 0.2,         // opacidad de relleno
         });
-      capa.addTo(mi_mapa);   //
+      capa.addTo(mi_mapa);
 
 </script>
 
